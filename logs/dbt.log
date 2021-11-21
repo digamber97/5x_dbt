@@ -7205,3 +7205,207 @@ limit 500
 2021-11-21 14:55:57.898116 (Thread-327): handling status request
 2021-11-21 14:55:57.898431 (Thread-327): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc02877f760>]}
 2021-11-21 14:55:57.898899 (Thread-327): sending response (<Response 1528 bytes [200 OK]>) to 10.0.19.216
+2021-11-21 14:56:00.093860 (MainThread): Connection 'model.digamber_dbt.recovery_rate' was properly closed.
+2021-11-21 14:56:00.131192 (Thread-328): Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+2021-11-21 14:56:00.131520 (Thread-328): Partial parsing enabled, no changes found, skipping parsing
+2021-11-21 14:56:00.136168 (Thread-328): Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0286b6f70>]}
+2021-11-21 14:56:00.853803 (Thread-329): handling status request
+2021-11-21 14:56:00.854156 (Thread-329): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0286c15e0>]}
+2021-11-21 14:56:00.854636 (Thread-329): sending response (<Response 1212 bytes [200 OK]>) to 10.0.3.156
+2021-11-21 14:56:00.856682 (Thread-330): handling status request
+2021-11-21 14:56:00.856892 (Thread-330): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0286c13d0>]}
+2021-11-21 14:56:00.857242 (Thread-330): sending response (<Response 1212 bytes [200 OK]>) to 10.0.18.59
+2021-11-21 14:59:35.490598 (Thread-331): handling status request
+2021-11-21 14:59:35.492797 (Thread-331): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0286c1190>]}
+2021-11-21 14:59:35.493284 (Thread-331): sending response (<Response 1212 bytes [200 OK]>) to 10.0.15.211
+2021-11-21 14:59:35.917912 (Thread-332): handling run_sql request
+2021-11-21 14:59:35.918241 (Thread-332): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0286c1040>]}
+2021-11-21 14:59:37.861679 (Thread-332): sending response (<Response 138 bytes [200 OK]>) to 10.0.42.19
+2021-11-21 14:59:37.872696 (MainThread): Acquiring new snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 14:59:37.889818 (MainThread): Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'f8ff7860-8f75-4191-82a5-eda6d2eed68e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fbdde7d8ca0>]}
+2021-11-21 14:59:37.890066 (MainThread): Found 4 models, 0 tests, 0 snapshots, 0 analyses, 172 macros, 0 operations, 0 seed files, 0 sources, 0 exposures
+2021-11-21 14:59:37.890455 (Thread-1): Acquiring new snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 14:59:37.890558 (Thread-1): Compiling rpc.digamber_dbt.request
+2021-11-21 14:59:37.892263 (Thread-1): finished collecting timing info
+2021-11-21 14:59:37.893288 (Thread-1): Using snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 14:59:37.893356 (Thread-1): On rpc.digamber_dbt.request: -- THIS QUERY DEMONSTRATES RELATION BETWEEN POPULATIOON DENSITY AND COVID_CASES 
+
+with recovery_rate as (
+    select max(data.CASE_RECOVERED_RATE) as CASE_RECOVERED_RATE , data.PROVINCE 
+    from "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."COVID19_DATA" as data GROUP BY data.PROVINCE
+)
+
+select cases.CASE_RECOVERED_RATE, pro.TOTAL_REGENCIES, pro.TOTAL_CITIES from recovery_rate 
+as cases INNER JOIN "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."PROVINCES" as pro 
+on pro.PROVINCE= cases.PROVINCE ORDER BY cases.CASE_RECOVERED_RATE
+limit 500
+/* limit added automatically by dbt cloud */
+2021-11-21 14:59:37.893411 (Thread-1): Opening a new connection, currently in state init
+2021-11-21 14:59:38.293603 (Thread-333): handling poll request
+2021-11-21 14:59:38.293961 (Thread-333): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc02878fe20>]}
+2021-11-21 14:59:38.294849 (Thread-333): sending response (<Response 3913 bytes [200 OK]>) to 10.0.15.211
+2021-11-21 14:59:38.627022 (Thread-1): SQL status: SUCCESS 33 in 0.73 seconds
+2021-11-21 14:59:38.629088 (Thread-1): finished collecting timing info
+2021-11-21 14:59:38.629270 (Thread-1): On rpc.digamber_dbt.request: Close
+2021-11-21 14:59:39.712893 (Thread-334): handling poll request
+2021-11-21 14:59:39.713227 (Thread-334): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc028686880>]}
+2021-11-21 14:59:39.714225 (Thread-334): sending response (<Response 6320 bytes [200 OK]>) to 10.0.15.211
+2021-11-21 14:59:51.860640 (Thread-335): handling status request
+2021-11-21 14:59:51.860966 (Thread-335): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc028686310>]}
+2021-11-21 14:59:51.861467 (Thread-335): sending response (<Response 1212 bytes [200 OK]>) to 10.0.41.204
+2021-11-21 14:59:52.283191 (Thread-336): handling run_sql request
+2021-11-21 14:59:52.283539 (Thread-336): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc028686e80>]}
+2021-11-21 14:59:54.202624 (Thread-336): sending response (<Response 138 bytes [200 OK]>) to 10.0.42.122
+2021-11-21 14:59:54.213507 (MainThread): Acquiring new snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 14:59:54.227056 (MainThread): Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '459bdc25-71b7-4b8a-aa26-1f9077a21143', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f87bca36cd0>]}
+2021-11-21 14:59:54.227285 (MainThread): Found 4 models, 0 tests, 0 snapshots, 0 analyses, 172 macros, 0 operations, 0 seed files, 0 sources, 0 exposures
+2021-11-21 14:59:54.227704 (Thread-1): Acquiring new snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 14:59:54.227815 (Thread-1): Compiling rpc.digamber_dbt.request
+2021-11-21 14:59:54.229573 (Thread-1): finished collecting timing info
+2021-11-21 14:59:54.230402 (Thread-1): Using snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 14:59:54.230462 (Thread-1): On rpc.digamber_dbt.request: -- THIS QUERY DEMONSTRATES RELATION BETWEEN POPULATIOON DENSITY AND COVID_CASES 
+
+with recovery_rate as (
+    select max(data.CASE_RECOVERED_RATE) as CASE_RECOVERED_RATE , data.PROVINCE 
+    from "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."COVID19_DATA" as data GROUP BY data.PROVINCE
+)
+
+select cases.CASE_RECOVERED_RATE, sum(pro.TOTAL_REGENCIES, pro.TOTAL_CITIES) from recovery_rate 
+as cases INNER JOIN "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."PROVINCES" as pro 
+on pro.PROVINCE= cases.PROVINCE ORDER BY cases.CASE_RECOVERED_RATE
+limit 500
+/* limit added automatically by dbt cloud */
+2021-11-21 14:59:54.230517 (Thread-1): Opening a new connection, currently in state init
+2021-11-21 14:59:54.620880 (Thread-337): handling poll request
+2021-11-21 14:59:54.621234 (Thread-337): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc028683a00>]}
+2021-11-21 14:59:54.622088 (Thread-337): sending response (<Response 3918 bytes [200 OK]>) to 10.0.18.59
+2021-11-21 14:59:54.732230 (Thread-1): Snowflake query id: 01a07083-0000-5c8f-0000-337100c8e6ee
+2021-11-21 14:59:54.732431 (Thread-1): Snowflake error: 000939 (22023): SQL compilation error: error line 6 at position 34
+too many arguments for function [SUM(PRO.TOTAL_REGENCIES, PRO.TOTAL_CITIES)] expected 1, got 2
+2021-11-21 14:59:54.732562 (Thread-1): finished collecting timing info
+2021-11-21 14:59:54.732716 (Thread-1): On rpc.digamber_dbt.request: Close
+2021-11-21 14:59:54.828601 (Thread-1): Got an exception: Database Error
+  000939 (22023): SQL compilation error: error line 6 at position 34
+  too many arguments for function [SUM(PRO.TOTAL_REGENCIES, PRO.TOTAL_CITIES)] expected 1, got 2
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/dbt/adapters/snowflake/connections.py", line 183, in exception_handler
+    yield
+  File "/usr/local/lib/python3.8/dist-packages/dbt/adapters/sql/connections.py", line 80, in add_query
+    cursor.execute(sql, bindings)
+  File "/usr/local/lib/python3.8/dist-packages/snowflake/connector/cursor.py", line 721, in execute
+    Error.errorhandler_wrapper(
+  File "/usr/local/lib/python3.8/dist-packages/snowflake/connector/errors.py", line 258, in errorhandler_wrapper
+    cursor.errorhandler(connection, cursor, error_class, error_value)
+  File "/usr/local/lib/python3.8/dist-packages/snowflake/connector/errors.py", line 188, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.ProgrammingError: 000939 (22023): SQL compilation error: error line 6 at position 34
+too many arguments for function [SUM(PRO.TOTAL_REGENCIES, PRO.TOTAL_CITIES)] expected 1, got 2
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/dbt/task/base.py", line 348, in safe_run
+    result = self.compile_and_execute(manifest, ctx)
+  File "/usr/local/lib/python3.8/dist-packages/dbt/task/base.py", line 291, in compile_and_execute
+    result = self.run(ctx.node, manifest)
+  File "/usr/local/lib/python3.8/dist-packages/dbt/task/base.py", line 393, in run
+    return self.execute(compiled_node, manifest)
+  File "/usr/local/lib/python3.8/dist-packages/dbt/rpc/node_runners.py", line 90, in execute
+    _, execute_result = self.adapter.execute(
+  File "/usr/local/lib/python3.8/dist-packages/dbt/adapters/base/impl.py", line 226, in execute
+    return self.connections.execute(
+  File "/usr/local/lib/python3.8/dist-packages/dbt/adapters/sql/connections.py", line 131, in execute
+    _, cursor = self.add_query(sql, auto_begin)
+  File "/usr/local/lib/python3.8/dist-packages/dbt/adapters/snowflake/connections.py", line 354, in add_query
+    connection, cursor = super().add_query(
+  File "/usr/local/lib/python3.8/dist-packages/dbt/adapters/sql/connections.py", line 87, in add_query
+    return connection, cursor
+  File "/usr/lib/python3.8/contextlib.py", line 131, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/usr/local/lib/python3.8/dist-packages/dbt/adapters/snowflake/connections.py", line 200, in exception_handler
+    raise DatabaseException(msg)
+dbt.exceptions.DatabaseException: Database Error
+  000939 (22023): SQL compilation error: error line 6 at position 34
+  too many arguments for function [SUM(PRO.TOTAL_REGENCIES, PRO.TOTAL_CITIES)] expected 1, got 2
+2021-11-21 14:59:54.829439 (Thread-1): Got exception RPCException(10003, Database Error, {'type': 'DatabaseException', 'message': 'Database Error in rpc request (from remote system)\n  000939 (22023): SQL compilation error: error line 6 at position 34\n  too many arguments for function [SUM(PRO.TOTAL_REGENCIES, PRO.TOTAL_CITIES)] expected 1, got 2', 'raw_sql': '{{ config(materialized = \'view\') }}\n\n\n-- THIS QUERY DEMONSTRATES RELATION BETWEEN POPULATIOON DENSITY AND COVID_CASES \n\nwith recovery_rate as (\n    select max(data.CASE_RECOVERED_RATE) as CASE_RECOVERED_RATE , data.PROVINCE \n    from "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."COVID19_DATA" as data GROUP BY data.PROVINCE\n)\n\nselect cases.CASE_RECOVERED_RATE, sum(pro.TOTAL_REGENCIES, pro.TOTAL_CITIES) from recovery_rate \nas cases INNER JOIN "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."PROVINCES" as pro \non pro.PROVINCE= cases.PROVINCE ORDER BY cases.CASE_RECOVERED_RATE\nlimit 500\n/* limit added automatically by dbt cloud */', 'compiled_sql': '\n\n\n-- THIS QUERY DEMONSTRATES RELATION BETWEEN POPULATIOON DENSITY AND COVID_CASES \n\nwith recovery_rate as (\n    select max(data.CASE_RECOVERED_RATE) as CASE_RECOVERED_RATE , data.PROVINCE \n    from "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."COVID19_DATA" as data GROUP BY data.PROVINCE\n)\n\nselect cases.CASE_RECOVERED_RATE, sum(pro.TOTAL_REGENCIES, pro.TOTAL_CITIES) from recovery_rate \nas cases INNER JOIN "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."PROVINCES" as pro \non pro.PROVINCE= cases.PROVINCE ORDER BY cases.CASE_RECOVERED_RATE\nlimit 500\n/* limit added automatically by dbt cloud */', 'tags': None}, None)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/dbt/task/rpc/sql_commands.py", line 144, in _in_thread
+    self.node_results.append(runner.safe_run(self.manifest))
+  File "/usr/local/lib/python3.8/dist-packages/dbt/task/base.py", line 364, in safe_run
+    result = self.error_result(ctx.node, error, started, [])
+  File "/usr/local/lib/python3.8/dist-packages/dbt/rpc/node_runners.py", line 56, in error_result
+    raise error
+dbt.rpc.error.RPCException: RPCException(10003, Database Error, {'type': 'DatabaseException', 'message': 'Database Error in rpc request (from remote system)\n  000939 (22023): SQL compilation error: error line 6 at position 34\n  too many arguments for function [SUM(PRO.TOTAL_REGENCIES, PRO.TOTAL_CITIES)] expected 1, got 2', 'raw_sql': '{{ config(materialized = \'view\') }}\n\n\n-- THIS QUERY DEMONSTRATES RELATION BETWEEN POPULATIOON DENSITY AND COVID_CASES \n\nwith recovery_rate as (\n    select max(data.CASE_RECOVERED_RATE) as CASE_RECOVERED_RATE , data.PROVINCE \n    from "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."COVID19_DATA" as data GROUP BY data.PROVINCE\n)\n\nselect cases.CASE_RECOVERED_RATE, sum(pro.TOTAL_REGENCIES, pro.TOTAL_CITIES) from recovery_rate \nas cases INNER JOIN "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."PROVINCES" as pro \non pro.PROVINCE= cases.PROVINCE ORDER BY cases.CASE_RECOVERED_RATE\nlimit 500\n/* limit added automatically by dbt cloud */', 'compiled_sql': '\n\n\n-- THIS QUERY DEMONSTRATES RELATION BETWEEN POPULATIOON DENSITY AND COVID_CASES \n\nwith recovery_rate as (\n    select max(data.CASE_RECOVERED_RATE) as CASE_RECOVERED_RATE , data.PROVINCE \n    from "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."COVID19_DATA" as data GROUP BY data.PROVINCE\n)\n\nselect cases.CASE_RECOVERED_RATE, sum(pro.TOTAL_REGENCIES, pro.TOTAL_CITIES) from recovery_rate \nas cases INNER JOIN "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."PROVINCES" as pro \non pro.PROVINCE= cases.PROVINCE ORDER BY cases.CASE_RECOVERED_RATE\nlimit 500\n/* limit added automatically by dbt cloud */', 'tags': None}, None)
+2021-11-21 14:59:56.869621 (Thread-338): handling poll request
+2021-11-21 14:59:56.869949 (Thread-338): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc028683d60>]}
+2021-11-21 14:59:56.870621 (Thread-338): sending response (<Response 13875 bytes [200 OK]>) to 10.0.19.216
+2021-11-21 15:01:06.784768 (Thread-339): handling status request
+2021-11-21 15:01:06.787895 (Thread-339): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc028683880>]}
+2021-11-21 15:01:06.788444 (Thread-339): sending response (<Response 1212 bytes [200 OK]>) to 10.0.14.170
+2021-11-21 15:01:07.233318 (Thread-340): handling run_sql request
+2021-11-21 15:01:07.233752 (Thread-340): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc02878fcd0>]}
+2021-11-21 15:01:09.153109 (Thread-340): sending response (<Response 138 bytes [200 OK]>) to 10.0.46.113
+2021-11-21 15:01:09.164065 (MainThread): Acquiring new snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 15:01:09.180928 (MainThread): Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'de35b581-6ac0-4a0a-8cc5-cd7769fe851c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8f906f3d00>]}
+2021-11-21 15:01:09.181158 (MainThread): Found 4 models, 0 tests, 0 snapshots, 0 analyses, 172 macros, 0 operations, 0 seed files, 0 sources, 0 exposures
+2021-11-21 15:01:09.181526 (Thread-1): Acquiring new snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 15:01:09.181630 (Thread-1): Compiling rpc.digamber_dbt.request
+2021-11-21 15:01:09.183379 (Thread-1): finished collecting timing info
+2021-11-21 15:01:09.184331 (Thread-1): Using snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 15:01:09.184426 (Thread-1): On rpc.digamber_dbt.request: -- THIS QUERY DEMONSTRATES RELATION BETWEEN POPULATIOON DENSITY AND COVID_CASES 
+
+with recovery_rate as (
+    select max(data.CASE_RECOVERED_RATE) as CASE_RECOVERED_RATE , data.PROVINCE 
+    from "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."COVID19_DATA" as data GROUP BY data.PROVINCE
+)
+
+select cases.CASE_RECOVERED_RATE, pro.TOTAL_REGENCIES+pro.TOTAL_CITIES from recovery_rate 
+as cases INNER JOIN "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."PROVINCES" as pro 
+on pro.PROVINCE= cases.PROVINCE ORDER BY cases.CASE_RECOVERED_RATE
+limit 500
+/* limit added automatically by dbt cloud */
+2021-11-21 15:01:09.184484 (Thread-1): Opening a new connection, currently in state init
+2021-11-21 15:01:09.562802 (Thread-341): handling poll request
+2021-11-21 15:01:09.563196 (Thread-341): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc02865f3d0>]}
+2021-11-21 15:01:09.564064 (Thread-341): sending response (<Response 3913 bytes [200 OK]>) to 10.0.5.136
+2021-11-21 15:01:09.916296 (Thread-1): SQL status: SUCCESS 33 in 0.73 seconds
+2021-11-21 15:01:09.918991 (Thread-1): finished collecting timing info
+2021-11-21 15:01:09.919233 (Thread-1): On rpc.digamber_dbt.request: Close
+2021-11-21 15:01:11.895762 (Thread-342): handling poll request
+2021-11-21 15:01:11.896094 (Thread-342): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc02865ffd0>]}
+2021-11-21 15:01:11.897071 (Thread-342): sending response (<Response 6163 bytes [200 OK]>) to 10.0.42.19
+2021-11-21 15:01:40.861168 (Thread-343): handling status request
+2021-11-21 15:01:40.861503 (Thread-343): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc02863b100>]}
+2021-11-21 15:01:40.862020 (Thread-343): sending response (<Response 1212 bytes [200 OK]>) to 10.0.3.156
+2021-11-21 15:01:41.282938 (Thread-344): handling run_sql request
+2021-11-21 15:01:41.283261 (Thread-344): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc02863b430>]}
+2021-11-21 15:01:43.241348 (Thread-344): sending response (<Response 138 bytes [200 OK]>) to 10.0.21.67
+2021-11-21 15:01:43.239802 (MainThread): Acquiring new snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 15:01:43.253903 (MainThread): Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '98db6d8a-d192-4167-81f8-b85a36c07422', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7b30bd8cd0>]}
+2021-11-21 15:01:43.254142 (MainThread): Found 4 models, 0 tests, 0 snapshots, 0 analyses, 172 macros, 0 operations, 0 seed files, 0 sources, 0 exposures
+2021-11-21 15:01:43.254535 (Thread-1): Acquiring new snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 15:01:43.254636 (Thread-1): Compiling rpc.digamber_dbt.request
+2021-11-21 15:01:43.256378 (Thread-1): finished collecting timing info
+2021-11-21 15:01:43.257370 (Thread-1): Using snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 15:01:43.257437 (Thread-1): On rpc.digamber_dbt.request: -- THIS QUERY DEMONSTRATES RELATION BETWEEN POPULATIOON DENSITY AND COVID_CASES 
+
+with recovery_rate as (
+    select max(data.CASE_RECOVERED_RATE) as CASE_RECOVERED_RATE , data.PROVINCE 
+    from "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."COVID19_DATA" as data GROUP BY data.PROVINCE
+)
+
+select cases.CASE_RECOVERED_RATE, pro.TOTAL_REGENCIES, pro.TOTAL_CITIES from recovery_rate 
+as cases INNER JOIN "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."PROVINCES" as pro 
+on pro.PROVINCE= cases.PROVINCE ORDER BY cases.CASE_RECOVERED_RATE
+limit 500
+/* limit added automatically by dbt cloud */
+2021-11-21 15:01:43.257511 (Thread-1): Opening a new connection, currently in state init
+2021-11-21 15:01:43.741322 (Thread-1): SQL status: SUCCESS 33 in 0.48 seconds
+2021-11-21 15:01:43.743344 (Thread-1): finished collecting timing info
+2021-11-21 15:01:43.743522 (Thread-1): On rpc.digamber_dbt.request: Close
+2021-11-21 15:01:44.114894 (Thread-345): handling poll request
+2021-11-21 15:01:44.115261 (Thread-345): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0286450a0>]}
+2021-11-21 15:01:44.116610 (Thread-345): sending response (<Response 9836 bytes [200 OK]>) to 10.0.18.59
+2021-11-21 15:02:16.788566 (Thread-346): handling status request
+2021-11-21 15:02:16.788888 (Thread-346): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc028645550>]}
+2021-11-21 15:02:16.789391 (Thread-346): sending response (<Response 1212 bytes [200 OK]>) to 10.0.42.19
