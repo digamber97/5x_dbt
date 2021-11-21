@@ -8,6 +8,6 @@ with recovery_rate as (
     from "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."COVID19_DATA" as data GROUP BY data.PROVINCE
 )
 
-select cases.CASE_RECOVERED_RATE, pro.AREA_KM_2_ from recovery_rate 
+select cases.CASE_RECOVERED_RATE, pro.TOTAL_REGENCIES from recovery_rate 
 as cases INNER JOIN "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."PROVINCES" as pro 
 on pro.PROVINCE= cases.PROVINCE ORDER BY cases.CASE_RECOVERED_RATE

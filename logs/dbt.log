@@ -7148,3 +7148,60 @@ limit 500
 2021-11-21 14:52:33.343564 (Thread-316): handling status request
 2021-11-21 14:52:33.343901 (Thread-316): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0287e0bb0>]}
 2021-11-21 14:52:33.344375 (Thread-316): sending response (<Response 1212 bytes [200 OK]>) to 10.0.19.216
+2021-11-21 14:52:35.523730 (Thread-317): Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+2021-11-21 14:52:35.524144 (Thread-317): Partial parsing enabled, no changes found, skipping parsing
+2021-11-21 14:52:35.530904 (Thread-317): Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0286f9040>]}
+2021-11-21 14:52:36.377544 (Thread-318): handling status request
+2021-11-21 14:52:36.377856 (Thread-318): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc02878f130>]}
+2021-11-21 14:52:36.378343 (Thread-318): sending response (<Response 1212 bytes [200 OK]>) to 10.0.41.204
+2021-11-21 14:52:36.477955 (Thread-319): handling status request
+2021-11-21 14:52:36.478228 (Thread-319): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc02878f100>]}
+2021-11-21 14:52:36.478664 (Thread-319): sending response (<Response 1212 bytes [200 OK]>) to 10.0.21.19
+2021-11-21 14:55:46.605964 (Thread-320): handling status request
+2021-11-21 14:55:46.607951 (Thread-320): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0287f75e0>]}
+2021-11-21 14:55:46.608464 (Thread-320): sending response (<Response 1212 bytes [200 OK]>) to 10.0.14.170
+2021-11-21 14:55:47.044147 (Thread-321): handling run_sql request
+2021-11-21 14:55:47.044572 (Thread-321): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0287f7880>]}
+2021-11-21 14:55:48.949942 (Thread-321): sending response (<Response 138 bytes [200 OK]>) to 10.0.26.121
+2021-11-21 14:55:48.960774 (MainThread): Acquiring new snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 14:55:48.977306 (MainThread): Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'c4420610-1fd8-4857-9d31-74ca40ed0ef3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fdefe864d30>]}
+2021-11-21 14:55:48.977539 (MainThread): Found 4 models, 0 tests, 0 snapshots, 0 analyses, 172 macros, 0 operations, 0 seed files, 0 sources, 0 exposures
+2021-11-21 14:55:48.977898 (Thread-1): Acquiring new snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 14:55:48.977997 (Thread-1): Compiling rpc.digamber_dbt.request
+2021-11-21 14:55:48.979700 (Thread-1): finished collecting timing info
+2021-11-21 14:55:48.980675 (Thread-1): Using snowflake connection "rpc.digamber_dbt.request".
+2021-11-21 14:55:48.980741 (Thread-1): On rpc.digamber_dbt.request: -- THIS QUERY DEMONSTRATES RELATION BETWEEN POPULATIOON DENSITY AND COVID_CASES 
+
+with recovery_rate as (
+    select max(data.CASE_RECOVERED_RATE) as CASE_RECOVERED_RATE , data.PROVINCE 
+    from "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."COVID19_DATA" as data GROUP BY data.PROVINCE
+)
+
+select cases.CASE_RECOVERED_RATE, pro.TOTAL_REGENCIES from recovery_rate 
+as cases INNER JOIN "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."PROVINCES" as pro 
+on pro.PROVINCE= cases.PROVINCE ORDER BY cases.CASE_RECOVERED_RATE
+limit 500
+/* limit added automatically by dbt cloud */
+2021-11-21 14:55:48.980795 (Thread-1): Opening a new connection, currently in state init
+2021-11-21 14:55:49.412165 (Thread-322): handling poll request
+2021-11-21 14:55:49.412547 (Thread-322): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0287f2fa0>]}
+2021-11-21 14:55:49.413449 (Thread-322): sending response (<Response 3896 bytes [200 OK]>) to 10.0.39.19
+2021-11-21 14:55:49.465971 (Thread-1): SQL status: SUCCESS 33 in 0.49 seconds
+2021-11-21 14:55:49.467824 (Thread-1): finished collecting timing info
+2021-11-21 14:55:49.467995 (Thread-1): On rpc.digamber_dbt.request: Close
+2021-11-21 14:55:50.875521 (Thread-323): handling poll request
+2021-11-21 14:55:50.875884 (Thread-323): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0287f2a60>]}
+2021-11-21 14:55:50.876905 (Thread-323): sending response (<Response 6067 bytes [200 OK]>) to 10.0.21.67
+2021-11-21 14:55:52.193200 (Thread-324): Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+2021-11-21 14:55:52.193534 (Thread-324): Partial parsing: updated file: digamber_dbt://models/recovery_rate.sql
+2021-11-21 14:55:52.197307 (Thread-324): Acquiring new snowflake connection "model.digamber_dbt.recovery_rate".
+2021-11-21 14:55:52.240614 (Thread-324): Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc02877f490>]}
+2021-11-21 14:55:52.912448 (Thread-325): handling status request
+2021-11-21 14:55:52.912795 (Thread-325): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc02878fc10>]}
+2021-11-21 14:55:52.913285 (Thread-325): sending response (<Response 1528 bytes [200 OK]>) to 10.0.18.59
+2021-11-21 14:55:52.954890 (Thread-326): handling status request
+2021-11-21 14:55:52.959831 (Thread-326): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0287590a0>]}
+2021-11-21 14:55:52.960258 (Thread-326): sending response (<Response 1528 bytes [200 OK]>) to 10.0.46.113
+2021-11-21 14:55:57.898116 (Thread-327): handling status request
+2021-11-21 14:55:57.898431 (Thread-327): Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'f6d1f414-c751-4e4a-96f1-f827320c3eb1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc02877f760>]}
+2021-11-21 14:55:57.898899 (Thread-327): sending response (<Response 1528 bytes [200 OK]>) to 10.0.19.216
