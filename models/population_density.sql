@@ -9,5 +9,5 @@ with population_density as (
     "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."COVID19_DATA" as data on pro.PROVINCE = data.PROVINCE GROUP BY data.PROVINCE
 )
 
-select cases.*, pro.POPULATION_DENSITY from population_density as cases INNER JOIN "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."PROVINCES" as pro 
+select CAST(MAX_TOTAL_CASES_PER_MILLION as INT) - CAST(MIN_TOTAL_CASES_PER_MILLION as INT)/2 as cases_number , CAST(pro.POPULATION_DENSITY as INT) as population_density from population_density as cases INNER JOIN "INTERVIEW_DB"."PLAYGROUND_DIGAMBER_KALIVEMULA"."PROVINCES" as pro 
 on pro.PROVINCE= cases.PROVINCE
